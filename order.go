@@ -1,18 +1,28 @@
 package bittrex
 
-import "github.com/shopspring/decimal"
+import (
+	"github.com/shopspring/decimal"
+	"time"
+)
 
 type Order struct {
+	Uuid              *string
 	OrderUuid         string          `json:"OrderUuid"`
 	Exchange          string          `json:"Exchange"`
-	TimeStamp         jTime           `json:"TimeStamp"`
 	OrderType         string          `json:"OrderType"`
 	Limit             decimal.Decimal `json:"Limit"`
 	Quantity          decimal.Decimal `json:"Quantity"`
 	QuantityRemaining decimal.Decimal `json:"QuantityRemaining"`
-	Commission        decimal.Decimal `json:"Commission"`
 	Price             decimal.Decimal `json:"Price"`
 	PricePerUnit      decimal.Decimal `json:"PricePerUnit"`
+	CommissionPaid    decimal.Decimal
+	Opened            jTime
+	Closed            *jTime
+	CancelInitiated   bool
+	ImmediateOrCancel bool
+	IsConditional     bool
+	Condition         string
+	ConditionTarget   decimal.Decimal
 }
 
 // For getorder
@@ -31,8 +41,8 @@ type Order2 struct {
 	CommissionPaid             decimal.Decimal
 	Price                      decimal.Decimal `json:"Price"`
 	PricePerUnit               decimal.Decimal `json:"PricePerUnit"`
-	Opened                     string
-	Closed                     string
+	Opened                     jTime
+	Closed                     *jTime
 	IsOpen                     bool
 	Sentinel                   string
 	CancelInitiated            bool
@@ -40,4 +50,41 @@ type Order2 struct {
 	IsConditional              bool
 	Condition                  string
 	ConditionTarget            decimal.Decimal
+}
+
+type CreateOrderParams struct {
+	MarketSymbol  string `json:"marketSymbol"`
+	Direction     OrderDirection `json:"direction"`
+	Type          OrderType `json:"type"`
+	Quantity      decimal.Decimal `json:"quantity"`
+	Ceiling       decimal.Decimal `json:"ceiling"`
+	Limit         decimal.Decimal `json:"limit"`
+	TimeInForce   TimeInForce `json:"timeInForce"`
+	ClientOrderID string `json:"clientOrderId"`
+	UseAwards     string `json:"useAwards"`
+}
+
+type OrderV3 struct {
+	ID            string `json:"id"`
+	MarketSymbol  string `json:"marketSymbol"`
+	Direction     string `json:"direction"`
+	Type          string `json:"type"`
+	Quantity      decimal.Decimal `json:"quantity"`
+	Limit         decimal.Decimal `json:"limit"`
+	Ceiling       decimal.Decimal `json:"ceiling"`
+	TimeInForce   string `json:"timeInForce"`
+	ClientOrderID string `json:"clientOrderId"`
+	FillQuantity  decimal.Decimal `json:"fillQuantity"`
+	Commission    decimal.Decimal `json:"commission"`
+	Proceeds      decimal.Decimal `json:"proceeds"`
+	Status        string `json:"status"`
+	CreatedAt     time.Time `json:"createdAt"`
+	UpdatedAt     time.Time `json:"updatedAt"`
+	ClosedAt      time.Time `json:"closedAt"`
+	OrderToCancel OrderData `json:"orderToCancel"`
+}
+
+type OrderData struct {
+	Type string `json:"type"`
+	ID   string `json:"id"`
 }
