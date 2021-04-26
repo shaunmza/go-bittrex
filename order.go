@@ -57,7 +57,7 @@ type CreateOrderParams struct {
 	Direction     OrderDirection `json:"direction"`
 	Type          OrderType `json:"type"`
 	Quantity      decimal.Decimal `json:"quantity"`
-	Ceiling       decimal.Decimal `json:"ceiling"`
+	Ceiling       decimal.Decimal `json:"-"`
 	Limit         decimal.Decimal `json:"limit"`
 	TimeInForce   TimeInForce `json:"timeInForce"`
 	ClientOrderID string `json:"clientOrderId"`
