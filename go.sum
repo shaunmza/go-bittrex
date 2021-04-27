@@ -15,8 +15,6 @@ github.com/stretchr/testify v1.6.1 h1:hDPOHmpOpP40lSULcqw7IrRb/u7w6RpDC9399XyoNd
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/thebotguys/signalr v0.0.0-20190119054324-787ebe6729fc h1:fc58Le/8rVCU8jwXUot9i9lkWkEnL0YGI/WLrbXmTWw=
 github.com/thebotguys/signalr v0.0.0-20190119054324-787ebe6729fc/go.mod h1:Vjxf5A2hvYlxWvXYlkXUNmlmWspXKKt7YpQ4O3XEd4w=
-github.com/toorop/go-bittrex v0.0.0-20190830073639-940e8b39e80d h1:hvKujzeLQ7XcmHIXgsqpFpO5MA5Mla5qalBIe2yMoZ4=
-github.com/toorop/go-bittrex v0.0.0-20190830073639-940e8b39e80d/go.mod h1:O13pGkQ2wK8qsRfBEw83OlZ2FSpCOf7M1DLnI0G+FUs=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c h1:dUUwHk2QECo/6vqA44rthZ8ie2QXMNeKRTHCNY2nXvo=
