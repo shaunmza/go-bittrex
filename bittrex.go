@@ -300,14 +300,31 @@ func (b *Bittrex) CancelOrder(orderID string) (order OrderV3, err error) {
 // GetClosedOrders returns orders that you currently have opened.
 // If market is set to "all", GetClosedOrders return all orders
 // If market is set to a specific order, GetClosedOrders return orders for this market
-func (b *Bittrex) GetClosedOrders(market string) (closedOrders []OrderV3, err error) {
+func (b *Bittrex) GetClosedOrders(market string, startDate, endDate *time.Time) (closedOrders []OrderV3, err error) {
 	resource := "orders/closed"
 	if market == "" {
 		market = "all"
 	}
+	hasParam := false
 	if market != "all" {
 		resource += "?marketSymbol=" + strings.ToUpper(market)
+		hasParam = true
 	}
+	if startDate != nil{
+		prepend := "?"
+		if hasParam {
+			prepend = "&"
+		}
+		resource += prepend + "startDate=" + startDate.Format(TIME_FORMAT)
+	}
+	if endDate != nil{
+		prepend := "?"
+		if hasParam {
+			prepend = "&"
+		}
+		resource += prepend + "endDate=" + endDate.Format(TIME_FORMAT)
+	}
+
 	r, err := b.client.do("GET", resource, "", true)
 	if err != nil {
 		return
