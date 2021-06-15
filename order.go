@@ -61,7 +61,7 @@ type CreateOrderParams struct {
 	Limit         decimal.Decimal `json:"limit"`
 	TimeInForce   TimeInForce `json:"timeInForce"`
 	ClientOrderID string `json:"clientOrderId"`
-	UseAwards     string `json:"useAwards"`
+	UseAwards     bool `json:"useAwards"`
 }
 
 type OrderV3 struct {
